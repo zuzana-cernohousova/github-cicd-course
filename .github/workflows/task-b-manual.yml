@@ -48,7 +48,7 @@ jobs:
         with:
           context: task_b
           push: true
-          tag: ${{ inputs.tag }}
+          tags: ghcr.io/${{ github.repository }}:${{ inputs.tag }}
       # TODO: build and push docker image
       
   # test:
