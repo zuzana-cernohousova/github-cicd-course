@@ -59,6 +59,8 @@ jobs:
     services:
       test-service:
         image: ghcr.io/${{ github.repository }}:${{ inputs.tag }} 
+        ports:
+          - 8080:80
     
     steps:
       - name: Fetch index
