@@ -44,7 +44,7 @@ jobs:
           tags: type=ref,event=tag
 
       - name: Build and push
-        uses: docker/build-push-action
+        uses: docker/build-push-action@v1
         with:
           tag: ghcr.io/${{ github.repository }}:${{ inputs.tag }}
       # TODO: build and push docker image
