@@ -9,7 +9,7 @@ def fib(n: int) -> int:
         print(a, end=" ")
         a, b = b, a + b
     
-    return a
+    return a 
 
 def test_square_area() -> None:
     assert square_area(5) == 25
