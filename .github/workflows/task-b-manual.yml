@@ -7,7 +7,14 @@ on:
         description: 'Message'
         required: true
         default: 'Hello CI/CD'
+      
+      tag:
+        description: 'Tag'
+        required: True
+        default: 'default-tag'
+
       # TODO: add tag input
+
 permissions:
   contents: read
   packages: write
@@ -35,5 +42,24 @@ jobs:
         with:
           images: ghcr.io/${{ github.repository }}
           tags: type=ref,event=tag
+
+      - name: Build and push
+        uses: docker/build-push-action
+        with:
+          tag: ghcr.io/${{ github.repository }}:${{ inputs.tag }}
       # TODO: build and push docker image
-  # TODO: Add test job
+      
+  # test:
+  #   needs: docker
+  #   runs-on: "ubuntu-latest"
+  #   name: Test
+
+  #   services:
+  #     # todo start the docker container
+
+
+  #   steps:
+  #     - name: Fetch index
+  #       run: curl 127.0.0.1:8080/index.html
+    
+      # TODO: Add test job
