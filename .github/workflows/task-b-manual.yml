@@ -51,17 +51,17 @@ jobs:
           tags: ghcr.io/${{ github.repository }}:${{ inputs.tag }}
       # TODO: build and push docker image
       
-  # test:
-  #   needs: docker
-  #   runs-on: "ubuntu-latest"
-  #   name: Test
+  test:
+    needs: docker
+    runs-on: "ubuntu-latest"
+    name: Test
 
-  #   services:
-  #     # todo start the docker container
-
-
-  #   steps:
-  #     - name: Fetch index
-  #       run: curl 127.0.0.1:8080/index.html
+    services:
+      test-service:
+        image: ghcr.io/${{ github.repository }}:${{ inputs.tag }} 
+    
+    steps:
+      - name: Fetch index
+        run: curl 127.0.0.1:8080/index.html
     
       # TODO: Add test job
