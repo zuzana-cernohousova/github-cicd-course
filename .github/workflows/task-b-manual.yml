@@ -46,6 +46,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v1
         with:
+          context: ./task_b/
           tag: ghcr.io/${{ github.repository }}:${{ inputs.tag }}
       # TODO: build and push docker image
       
